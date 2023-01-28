@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using LineBot.Filters;
 
 namespace LineBot.Controllers
 {
@@ -8,8 +9,10 @@ namespace LineBot.Controllers
     public class LineController : ControllerBase
     {
         [HttpPost]
+        [LineVerifySignature]
         public async Task<IActionResult> Post(dynamic request)
         {
+            Console.WriteLine(request);
             return Ok(request);
         }
     }
